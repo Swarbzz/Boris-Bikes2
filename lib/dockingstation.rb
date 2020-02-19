@@ -9,6 +9,16 @@ class DockingStation
     @bike = bike
   end
 
+  def full?
+    true
+    raise "Full" if true
+  end
+
+  def available?
+    false
+    raise "No bikes bitches!" if true
+  end
+
 end
 
 class Bike
@@ -20,10 +30,4 @@ class Bike
   def docked?
     true
   end
-
-  def available?
-    false
-    raise "No bikes bitches!"
-  end
-
 end

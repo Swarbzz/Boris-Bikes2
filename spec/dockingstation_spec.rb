@@ -14,7 +14,12 @@ describe DockingStation do
   end
 
   it "No bike available" do
-    bike = Bike.new
+    bike = DockingStation.new
     expect {expect(bike).to_not be_available}.to raise_error("No bikes bitches!")
+  end
+
+  it "dock is full" do
+    bike = DockingStation.new
+    expect {expect(bike).to be_full}.to raise_error("Full")
   end
 end
