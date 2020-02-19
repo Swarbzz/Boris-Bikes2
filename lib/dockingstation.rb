@@ -21,4 +21,9 @@ class Bike
     true
   end
 
+  def available?
+    false
+    raise "No bikes bitches!"
+  end
+
 end
