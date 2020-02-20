@@ -13,13 +13,16 @@ describe DockingStation do
     expect(subject.bike).to eq bike
   end
 
-  it "No bike available" do
-    bike = DockingStation.new
-    expect {expect(bike).to_not be_available}.to raise_error("No bikes bitches!")
+  describe 'release_bike' do
+    it 'no bikes' do
+      expect {subject.release_bike}.to raise_error("No bikes bitches!")
+    end
   end
 
-  it "dock is full" do
-    bike = DockingStation.new
-    expect {expect(bike).to be_full}.to raise_error("Full")
+  describe 'dock' do
+    it "dock is full" do
+      subject.dock(Bike.new)
+      expect { subject.dock Bike.new }.to raise_error("Full")
+    end
   end
 end

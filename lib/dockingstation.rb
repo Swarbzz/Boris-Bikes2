@@ -1,24 +1,16 @@
 class DockingStation
-  attr_reader :bike
+  attr_reader :bike, :capacity
+  @capacity = 1
 
   def release_bike
-    Bike.new
+    fail 'No bikes bitches!' unless @bike
+    @bike
   end
 
   def dock(bike)
+    fail 'Full' if @bike
     @bike = bike
   end
-
-  def full?
-    true
-    raise "Full" if true
-  end
-
-  def available?
-    false
-    raise "No bikes bitches!" if true
-  end
-
 end
 
 class Bike
