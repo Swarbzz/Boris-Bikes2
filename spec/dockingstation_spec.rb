@@ -10,19 +10,19 @@ describe DockingStation do
   it "docks bike" do
     bike = Bike.new
     subject.dock(bike)
-    expect(subject.bike).to eq bike
+    expect(subject.bike).to include bike
   end
 
-  describe 'release_bike' do
-    it 'no bikes' do
-      expect {subject.release_bike}.to raise_error("No bikes bitches!")
+    it "no bikes" do
+      expect { 10.times {subject.release_bike} }.to raise_error("No bikes bitches!")
     end
-  end
 
-  describe 'dock' do
     it "dock is full" do
-      subject.dock(Bike.new)
-      expect { subject.dock Bike.new }.to raise_error("Full")
+      bike = Bike.new
+      expect { 21.times {subject.dock(bike)} }.to raise_error("Full")
+    end
+    it "dock multiple bikes" do
+      bike = Bike.new
+      expect { 10.times {subject.dock(bike)} }.not_to raise_error
     end
   end
-end
