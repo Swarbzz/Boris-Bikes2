@@ -1,19 +1,19 @@
 class DockingStation
   attr_reader :bike, :capacity
 
-def initialize
-  @capacity = 20
-  @bike = []
-end
+  def initialize
+    @capacity = 1
+    @bike = []
+  end
+
   def release_bike
-    Bike.new
-    fail 'No bikes bitches!' unless @bike.count >= 1
-    
+    fail 'No bikes bitches!' unless @bike
+    @bike
   end
 
   def dock(bike)
-    @bike.push(bike)
-    fail 'Full' if @bike.count >= @capacity
+    fail 'Full' if @bike
+    @bike = bike
   end
 end
 
